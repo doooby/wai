@@ -1,8 +1,8 @@
 {
   "name": "wai",
   "version": "1.0.0",
-  "description": "Who Am I - strict TS mapper for JS objects",
-  "main": "lib/index.ts",
+  "description": "Who Am I - TS mapper for JS objects",
+  "main": "lib/wai/index.ts",
   "author": "doooby <zelazk.o@email.cz>",
   "license": "MIT",
   "private": false,
