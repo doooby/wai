@@ -1,3 +1,4 @@
 export * from './primitives';
+export * from './objects';
 export * from './properties';
-export * from './associations';
+export * from './nesting';

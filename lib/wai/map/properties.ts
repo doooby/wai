@@ -1,6 +1,6 @@
-import wai from "~/index";
+import wai from '~/index';
 
-export function just<V> (
+export function prop<V> (
   name: string,
   parent: wai.Object,
   map: (value) => V,
@@ -15,7 +15,7 @@ export function just<V> (
   }
 }
 
-export function maybe<V> (
+export function maybeProp<V> (
   name: string,
   parent: wai.Object,
   map: (value) => V,
@@ -23,17 +23,17 @@ export function maybe<V> (
 ): undefined | V {
   const value = parent[name];
   if (wai.isEmpty(value)) return defaultValue;
-  return just(name, parent, map);
+  return prop(name, parent, map);
 }
 
-export function ensure<V> (
+export function ensureProp<V> (
   name: string,
   parent: wai.Object,
   map: (value) => V,
   defaultValue: undefined | V = undefined,
 ): undefined | V {
   try {
-    return maybe(name, parent, map);
+    return maybeProp(name, parent, map);
   } catch (error) {
     return defaultValue;
   }
