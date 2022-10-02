@@ -11,8 +11,7 @@ export default class MappingError extends Error {
 
   seal () {
     const props = this.propertyTraces.map(([ prop ]) => prop);
-    props.push('.');
     props.reverse();
-    this.message = `${this.message}: ${this.source} at ${props.join('.')}`;
+    this.message = `${this.message}: ${this.source} at .${props.join('.')}`;
   }
 }
