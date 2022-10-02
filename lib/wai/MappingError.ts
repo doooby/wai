@@ -1,11 +1,11 @@
 export default class MappingError extends Error {
-  private readonly propertyTraces: [ string, any ][] = [];
+  private readonly propertyTraces: [ number | string, any ][] = [];
 
   constructor (private readonly source: string) {
     super('wai mapping error');
   }
 
-  addPropertyTrace (name: string, parent) {
+  addPropertyTrace (name: number | string, parent) {
     this.propertyTraces.push([ name, parent ]);
   }
 

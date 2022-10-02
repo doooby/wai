@@ -1,5 +1,5 @@
 export * from './types';
-export * from './nullable';
+export * from './helpers';
 export * from './parsing';
-export * as map from './map';
+export * from './mappers';
 export { default as MappingError } from './MappingError';

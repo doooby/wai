@@ -9,20 +9,25 @@ describe('NestedObject', () => {
       a: boolean;
       b?: string[];
     };
+    tuple?: [ string, undefined | string ];
   }
 
-  function mapNestedObject(value): NestedObject {
-    return wai.map.object(value, value => ({
-      id: wai.map.prop('id', value, wai.map.integer),
-      name: wai.map.maybeProp('name', value, wai.map.string),
-      settings: wai.map.maybeProp('settings', value,
-        wai.map.nestedObject(value => ({
-          a: wai.map.prop('a', value, wai.map.boolean),
-          b: wai.map.maybeProp('b', value, wai.map.nestedListOf(wai.map.string)),
-        })),
-      ),
-    }));
-  }
+  const mapNestedObject: (value) => NestedObject = wai.object(value => ({
+    id: wai.prop('id', value, wai.integer),
+    name: wai.prop('name', value, wai.nullable(wai.string)),
+    settings: wai.prop('settings', value,
+      wai.nullable(wai.object(value => ({
+        a: wai.prop('a', value, wai.boolean),
+        b: wai.prop('b', value, wai.nullable(wai.listOf(wai.string))),
+      }))),
+    ),
+    tuple: wai.prop('tuple', value,
+      wai.nullable(wai.tuple(
+        wai.string,
+        wai.nullable(wai.string),
+      )),
+    ),
+  }));
 
   it('parses successfully', () => {
     const result = mapNestedObject({ id: 1, name: 'one' });
@@ -72,6 +77,24 @@ describe('NestedObject', () => {
         mapNestedObject,
       )[0]!.message
     ).toEqual('wai mapping error: not string at .settings.b.1');
+  });
+
+  it('parses optional nested tuple', () => {
+    const result = mapNestedObject({ id: 1, tuple: [ 'a', 'b' ] });
+    expect(result).toEqual({ id: 1, tuple: [ 'a', 'b' ] });
+    expect(Object.isFrozen(result.settings));
+    expect(
+      mapNestedObject({ id: 1, tuple: [ 'a' ] })
+    ).toEqual({ id: 1, tuple: [ 'a' ] });
+  });
+
+  it('fails to parse tuple with correct error', () => {
+    expect(
+      wai.tryParse(
+        { id: 1, tuple: [ 'a', 0 ] },
+        mapNestedObject,
+      )[0]!.message
+    ).toEqual('wai mapping error: not string at .tuple.1');
   });
 
 });
