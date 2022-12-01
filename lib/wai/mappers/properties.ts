@@ -1,4 +1,4 @@
-import wai from '~/index';
+import wai from '@node_modules/wai';
 
 export function prop<V> (
   name: number | string,

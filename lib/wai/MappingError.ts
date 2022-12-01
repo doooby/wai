@@ -1,4 +1,4 @@
-export default class MappingError extends Error {
+export class MappingError extends Error {
   private readonly propertyTraces: [ number | string, any ][] = [];
 
   constructor (private readonly source: string) {

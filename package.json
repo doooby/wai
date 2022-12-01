@@ -4,7 +4,7 @@
   "description": "Who Am I - TS mapper for JS objects",
   "author": "doooby <zelazk.o@email.cz>",
   "license": "MIT",
-  "main": "index.ts",
+  "main": "liw/wai/index.ts",
   "type": "module",
   "scripts": {
     "test": "jest --watch"
