@@ -1,6 +1,6 @@
 # WAI - What am I ?
 
-strict TS mapper for JS objects
+strict TS mapper for JS data
 
 #### Is it any good?
 
