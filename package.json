@@ -4,8 +4,12 @@
   "description": "Who Am I - TS mapper for JS objects",
   "author": "doooby <zelazk.o@email.cz>",
   "license": "MIT",
-  "main": "liw/wai/index.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "import": "./lib/wai/index.ts"
+    }
+  },
   "scripts": {
     "test": "jest --watch"
   },
