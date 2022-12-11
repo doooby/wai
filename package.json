@@ -5,6 +5,7 @@
   "author": "doooby <zelazk.o@email.cz>",
   "license": "MIT",
   "type": "module",
+  "types": "./lib/wai/index.ts",
   "exports": {
     ".": "./lib/wai/index.ts"
   },
