@@ -1,3 +1,1 @@
-import * as wai from './wai';
-export default wai;
-export * from './wai';
+export * as wai from './wai';

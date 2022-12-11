@@ -1,4 +1,4 @@
-import wai from '@node_modules/wai';
+import { wai } from '@node_modules/wai';
 
 export function object<V> (map: (value) => V): (value) => V {
   return value => {

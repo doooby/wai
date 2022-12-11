@@ -6,9 +6,7 @@
   "license": "MIT",
   "type": "module",
   "exports": {
-    ".": {
-      "import": "./lib/wai/index.ts"
-    }
+    ".": "./lib/wai/index.ts"
   },
   "scripts": {
     "test": "jest --watch"

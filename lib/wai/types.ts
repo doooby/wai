@@ -1,4 +1,4 @@
-import wai from '@node_modules/wai';
+import { wai } from '@node_modules/wai';
 
 export type Object = Record<string, any>;
 
