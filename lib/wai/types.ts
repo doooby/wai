@@ -2,6 +2,8 @@ import wai from '@node_modules/wai';
 
 export type Object = Record<string, any>;
 
+type Labels = { [name: string]: undefined | string };
+
 export interface RecordWithId {
   id: string;
 }
@@ -13,6 +15,10 @@ export interface FailedRecord<R extends RecordWithId> extends RecordWithId {
 export interface MappedRecord<R extends RecordWithId> extends RecordWithId {
   __mappingError: undefined;
   attributes: R;
+}
+
+export interface AbbreviatedRecord extends RecordWithId {
+  labels: Labels;
 }
 
 export interface RecordChange extends RecordWithId {
