@@ -1,4 +1,4 @@
-import { wai } from '@node_modules/wai';
+import { wai } from 'wai';
 
 export function nullable<V> (map: (value) => V): (value) => undefined | V {
   return value => {
