@@ -20,6 +20,10 @@ export interface MappedRecord<R extends RecordWithId> extends RecordWithId {
 export interface AbbreviatedRecord extends RecordWithId {
   labels: Labels;
 }
+export type BRecordValue = undefined | string;
+export type BRecord<B extends Record<string, BRecordValue>> = RecordWithId & {
+  caption: string;
+} & B;
 
 export interface RecordChange extends RecordWithId {
   errors?: [string, string][];
