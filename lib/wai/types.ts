@@ -21,9 +21,10 @@ export interface AbbreviatedRecord extends RecordWithId {
   labels: Labels;
 }
 export type BRecordValue = undefined | string;
-export type BRecord<B extends Record<string, BRecordValue>> = RecordWithId & {
+export type BRecordBase = RecordWithId & {
   caption: string;
-} & B;
+};
+export type BRecord<B extends Record<keyof B, BRecordValue>> = BRecordBase & B;
 
 export interface RecordChange extends RecordWithId {
   errors?: [string, string][];

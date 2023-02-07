@@ -17,7 +17,7 @@ export function abbreviatedRecord (value): wai.AbbreviatedRecord {
   )(value);
 }
 
-export function bRecord<B extends Record<string, wai.BRecordValue>> (value): wai.BRecord<B> {
+export function bRecord<B extends Record<keyof B, wai.BRecordValue>> (value): wai.BRecord<B> {
   return wai.object(value => {
     const id = wai.prop('id', value, wai.string);
     const caption = wai.prop('caption', value, wai.string);
